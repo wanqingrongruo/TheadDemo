@@ -74,10 +74,11 @@ class GCDViewController: UIViewController {
     */
     
     // 栅栏方法
+    // 栅栏函数不能使用全局并发队列，会丧失拦截功能
     func dispatchBarrier() {
          let concurrentQueue = DispatchQueue(label: "com.concurrentQueue02", qos: .default, attributes: .concurrent)
         
-        concurrentQueue.async {
+        concurrentQueue.async {  // 里面不能执行异步的网络请求---并不会等待网络请求结束,因为网络请求已经进入了新的队列
             for i in 1...3 {
                 print("并发异步1 : \(i)")
             }
@@ -151,26 +152,25 @@ class GCDViewController: UIViewController {
         let semaphore = DispatchSemaphore(value: 2)
         
         let queue01 = DispatchQueue(label: "ninini01", qos: .default, attributes: .concurrent)
+         semaphore.wait()
         queue01.async {
-            semaphore.wait()
             print("我是第一个")
             sleep(1)
             print("我走了")
             semaphore.signal()
         }
+        semaphore.wait()
         queue01.async {
-            semaphore.wait()
             print("我是第二个")
             sleep(2)
             print("我走了")
             semaphore.signal()
         }
+        semaphore.wait()
         queue01.async {
-            semaphore.wait()
             print("我是第三个")
             semaphore.signal()
         }
-        
     }
     
     func once() {

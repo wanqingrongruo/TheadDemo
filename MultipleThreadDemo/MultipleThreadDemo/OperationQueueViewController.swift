@@ -36,7 +36,9 @@ class OperationQueueViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+       // dependencyOp()
         
+        customOp()
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,16 +76,31 @@ class OperationQueueViewController: UIViewController {
     }
 
     func customOp() {
-        let op = customOperation()
-        op.test()
+       let blockOp01 = customOperation()
+        blockOp01.compeltedBlock = { des in
+            print(des)
+        }
+        let blockOp02 = BlockOperation {
+            print("终于特么轮到我custom")
+        }
+        
+        blockOp02.addDependency(blockOp01) // 2 依赖于 1
+        
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.addOperation(blockOp01)
+        queue.addOperation(blockOp02)
     }
     
     
     func dependencyOp() {
-        let blockOp01 = BlockOperation {
-            DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
+        let blockOp01 = BlockOperation { // 里面不能执行异步的网络请求---并不会等待网络请求结束,因为网络请求已经进入了新的队列
+//            DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
+//                print("等2s")
+//            })
+            DispatchQueue.global().async {
                 print("等2s")
-            })
+            }
         }
         
         let blockOp02 = BlockOperation {
@@ -100,11 +117,26 @@ class OperationQueueViewController: UIViewController {
 }
 
 class customOperation: Operation {
-    override func main() {
-        super.main()
+    
+    var isExcuting: Bool
+    
+    var compeltedBlock: ((String)->())?  // 回调
+    
+    override init() {
+        isExcuting = false
+        super.init()
     }
     
-    func test() {
-        self.start()
+    override func main() {
+        
+        print("开始执行任务")
+        // 具体下载任务放这里
+        DispatchQueue.global().async {
+            sleep(2)
+            self.compeltedBlock?("任务完成")
+        }
+    }
+    override var isExecuting: Bool {
+        return self.isExecuting
     }
 }

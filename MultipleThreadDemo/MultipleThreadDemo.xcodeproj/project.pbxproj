@@ -15,6 +15,9 @@
 		E01C970A20157E6200C8DFF2 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C970920157E6200C8DFF2 /* ThreadViewController.swift */; };
 		E01C970C20157E6C00C8DFF2 /* GCDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C970B20157E6C00C8DFF2 /* GCDViewController.swift */; };
 		E01C970E20157E8400C8DFF2 /* OperationQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C970D20157E8400C8DFF2 /* OperationQueueViewController.swift */; };
+		E08C3C2820299E4A006085FF /* barrier.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E08C3C2720299E4A006085FF /* barrier.jpg */; };
+		E08C3C2A20299E52006085FF /* Semphore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E08C3C2920299E52006085FF /* Semphore.jpg */; };
+		E08C3C2C2029A9D9006085FF /* 自定义Operation.zip in Resources */ = {isa = PBXBuildFile; fileRef = E08C3C2B2029A9D9006085FF /* 自定义Operation.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		E01C970920157E6200C8DFF2 /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		E01C970B20157E6C00C8DFF2 /* GCDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDViewController.swift; sourceTree = "<group>"; };
 		E01C970D20157E8400C8DFF2 /* OperationQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueueViewController.swift; sourceTree = "<group>"; };
+		E08C3C2720299E4A006085FF /* barrier.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barrier.jpg; sourceTree = "<group>"; };
+		E08C3C2920299E52006085FF /* Semphore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Semphore.jpg; sourceTree = "<group>"; };
+		E08C3C2B2029A9D9006085FF /* 自定义Operation.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "自定义Operation.zip"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,9 @@
 				E01C96FE20157D3D00C8DFF2 /* Assets.xcassets */,
 				E01C970020157D3D00C8DFF2 /* LaunchScreen.storyboard */,
 				E01C970320157D3D00C8DFF2 /* Info.plist */,
+				E08C3C2720299E4A006085FF /* barrier.jpg */,
+				E08C3C2920299E52006085FF /* Semphore.jpg */,
+				E08C3C2B2029A9D9006085FF /* 自定义Operation.zip */,
 			);
 			path = MultipleThreadDemo;
 			sourceTree = "<group>";
@@ -134,7 +143,10 @@
 			files = (
 				E01C970220157D3D00C8DFF2 /* LaunchScreen.storyboard in Resources */,
 				E01C96FF20157D3D00C8DFF2 /* Assets.xcassets in Resources */,
+				E08C3C2820299E4A006085FF /* barrier.jpg in Resources */,
+				E08C3C2A20299E52006085FF /* Semphore.jpg in Resources */,
 				E01C96FD20157D3D00C8DFF2 /* Main.storyboard in Resources */,
+				E08C3C2C2029A9D9006085FF /* 自定义Operation.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

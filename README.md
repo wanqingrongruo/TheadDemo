@@ -10,5 +10,6 @@
 * [[译]Swift 3 中实现Dispatch once扩展](https://www.jianshu.com/p/640b64faea9a)
 * [细说GCD（Grand Central Dispatch）如何用](https://github.com/ming1016/study/wiki/细说GCD（Grand-Central-Dispatch）如何用)
 * [SwiftTimer](https://github.com/100mango/zen/blob/master/打造一个优雅的Timer/make%20a%20timer.md)
+* [iOS 并发编程之 Operation Queues](http://blog.leichunfeng.com/blog/2015/07/29/ios-concurrency-programming-operation-queues/)
 
 
