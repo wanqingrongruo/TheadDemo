@@ -76,20 +76,27 @@ class OperationQueueViewController: UIViewController {
     }
 
     func customOp() {
-       let blockOp01 = customOperation()
-        blockOp01.compeltedBlock = { des in
-            print(des)
-        }
-        let blockOp02 = BlockOperation {
-            print("终于特么轮到我custom")
-        }
-        
-        blockOp02.addDependency(blockOp01) // 2 依赖于 1
-        
         let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        queue.addOperation(blockOp01)
-        queue.addOperation(blockOp02)
+        queue.maxConcurrentOperationCount = 3
+        
+        var lastOp: customOperation? = nil
+        
+        for i in 0...4 {
+            let op = customOperation(number: i)
+            if let la = lastOp {
+                op.addDependency(la)
+            }
+            lastOp = op
+            
+            queue.addOperation(op)
+        }
+        
+        let allOp = BlockOperation {
+            print("全部任务都完成了")
+        }
+        
+        allOp.addDependency(lastOp!)
+        queue.addOperation(allOp)
     }
     
     
@@ -118,25 +125,50 @@ class OperationQueueViewController: UIViewController {
 
 class customOperation: Operation {
     
-    var isExcuting: Bool
+    private var _executing: Bool = false
+    private var _finished: Bool = false
+    private var number: Int = 0
     
-    var compeltedBlock: ((String)->())?  // 回调
-    
-    override init() {
-        isExcuting = false
-        super.init()
+    override var isExecuting: Bool {
+        return _executing
     }
-    
+    override var isFinished: Bool {
+        return _finished
+    }
+
+    init(number: Int) {
+        self.number = number
+    }
     override func main() {
         
-        print("开始执行任务")
-        // 具体下载任务放这里
-        DispatchQueue.global().async {
-            sleep(2)
-            self.compeltedBlock?("任务完成")
+        if isCancelled {
+            self.willChangeValue(forKey: "isFinished")
+            _finished = true
+            self.didChangeValue(forKey: "isFinished")
+            return
         }
+        
+        self.willChangeValue(forKey: "isExecuting")
+        _executing = true
+        print("开始任务.... \(self.number)")
+        DispatchQueue.global().async { [weak self] in
+            sleep(2)
+            print("任务完成.... \(self?.number)")
+            self?.completeOperation()
+        }
+        self.didChangeValue(forKey: "isExecuting")
     }
-    override var isExecuting: Bool {
-        return self.isExecuting
+    
+    private func completeOperation() {
+        self.willChangeValue(forKey: "isFinished")
+        self.willChangeValue(forKey: "isExecuting")
+        _executing = false
+        _finished = true
+        self.didChangeValue(forKey: "isFinished")
+        self.didChangeValue(forKey: "isExecuting")
+    }
+    
+    deinit {
+        print("SwiftOperation deinit: \(self.number)")
     }
 }
