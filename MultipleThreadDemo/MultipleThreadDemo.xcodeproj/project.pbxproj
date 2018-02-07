@@ -18,6 +18,7 @@
 		E08C3C2820299E4A006085FF /* barrier.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E08C3C2720299E4A006085FF /* barrier.jpg */; };
 		E08C3C2A20299E52006085FF /* Semphore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E08C3C2920299E52006085FF /* Semphore.jpg */; };
 		E08C3C2E2029B135006085FF /* 自定义Operation.zip in Resources */ = {isa = PBXBuildFile; fileRef = E08C3C2D2029B135006085FF /* 自定义Operation.zip */; };
+		E08C3C30202A8B32006085FF /* Concept.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3C2F202A8B32006085FF /* Concept.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E08C3C2720299E4A006085FF /* barrier.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barrier.jpg; sourceTree = "<group>"; };
 		E08C3C2920299E52006085FF /* Semphore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Semphore.jpg; sourceTree = "<group>"; };
 		E08C3C2D2029B135006085FF /* 自定义Operation.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "自定义Operation.zip"; sourceTree = "<group>"; };
+		E08C3C2F202A8B32006085FF /* Concept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concept.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				E01C96F720157D3D00C8DFF2 /* AppDelegate.swift */,
 				E01C96F920157D3D00C8DFF2 /* ViewController.swift */,
+				E08C3C2F202A8B32006085FF /* Concept.swift */,
 				E01C96FB20157D3D00C8DFF2 /* Main.storyboard */,
 				E01C970920157E6200C8DFF2 /* ThreadViewController.swift */,
 				E01C970B20157E6C00C8DFF2 /* GCDViewController.swift */,
@@ -159,6 +162,7 @@
 			files = (
 				E01C96FA20157D3D00C8DFF2 /* ViewController.swift in Sources */,
 				E01C96F820157D3D00C8DFF2 /* AppDelegate.swift in Sources */,
+				E08C3C30202A8B32006085FF /* Concept.swift in Sources */,
 				E01C970E20157E8400C8DFF2 /* OperationQueueViewController.swift in Sources */,
 				E01C970A20157E6200C8DFF2 /* ThreadViewController.swift in Sources */,
 				E01C970C20157E6C00C8DFF2 /* GCDViewController.swift in Sources */,
