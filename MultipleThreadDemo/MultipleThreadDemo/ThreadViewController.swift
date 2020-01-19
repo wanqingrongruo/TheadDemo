@@ -50,13 +50,12 @@ class ThreadViewController: UIViewController {
     }
     
     func someClassMethods() {
-        Thread.current
         Thread.sleep(forTimeInterval: 2)
         Thread.sleep(until: Date.init(timeIntervalSinceReferenceDate: 1000))
         Thread.exit() // 退出线程
-        Thread.isMainThread // 是否是主线程
+        _ = Thread.isMainThread // 是否是主线程
         Thread.isMultiThreaded() // 当前线程是否是多线程
-        Thread.isMainThread // 是否是主线程对象
+        _ = Thread.isMainThread // 是否是主线程对象
         
         
     }
