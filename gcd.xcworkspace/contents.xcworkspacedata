@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CommonAsyncTasks.playground">
+   </FileRef>
+   <FileRef
       location = "group:MultipleThreadDemo/MultipleThreadDemo.xcodeproj">
    </FileRef>
 </Workspace>

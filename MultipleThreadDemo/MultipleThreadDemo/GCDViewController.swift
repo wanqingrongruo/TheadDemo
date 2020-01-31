@@ -37,23 +37,25 @@ class GCDViewController: UIViewController {
         let mainQueue = DispatchQueue.main
         let globalQueue = DispatchQueue.global()
         
-        // 同步不创建线程, 异步创建线程
-        serialQueue.sync {
-            print("串行同步")
-        }
-        serialQueue.async {
-            print("串行异步")
-        }
-        concurrentQueue.sync {
-            print("并行同步")
-        }
-        concurrentQueue.async {
-            print("并行异步")
-        }
-        
-        concurrentQueue.asyncAfter(deadline: DispatchTime.now() + 2) {
-            print("延迟2s")
-        }
+//        // 同步不创建线程, 异步创建线程
+//        serialQueue.sync {
+//            print("串行同步")
+//        }
+//        serialQueue.async {
+//            print("串行异步")
+//        }
+//        concurrentQueue.sync {
+//            print("并行同步")
+//        }
+//        concurrentQueue.async {
+//            print("并行异步")
+//        }
+//
+//        concurrentQueue.asyncAfter(deadline: DispatchTime.now() + 2) {
+//            print("延迟2s")
+//        }
+
+        dispatchBarrier()
         
     }
 
@@ -92,6 +94,10 @@ class GCDViewController: UIViewController {
         // 拦住这里,,在 1+2 执行完之后再执行 3+4
         let workItem = DispatchWorkItem(qos: .default, flags: .barrier) {
              print("barrier-----\(Thread.current)")
+
+            concurrentQueue.asyncAfter(deadline: .now() + 2) {
+                print("==========")
+            }
         }
         concurrentQueue.async(execute: workItem)
         
@@ -116,7 +122,7 @@ class GCDViewController: UIViewController {
         /**
          * ## group 特点
          * 1. 所有任务会并发执行
-         * 2. 所有的一步函数都添加到队列中,然后放进 group 中进行监听
+         * 2. 所有的异步函数都添加到队列中,然后放进 group 中进行监听
          * group.notify 监听完成
          */
 
